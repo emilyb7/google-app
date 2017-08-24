@@ -1,3 +1,5 @@
 node_modules
 .firebaserc
 firebase-debug.log
+secret.json
+gapps.config.json
