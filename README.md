@@ -53,10 +53,65 @@ As well as two new scripts like this:
 }
 ```
 
+## Spreadsheet
+
+I've set up a spreadsheet with 2 columns. I've entered just 2 column name: 'post code' and 'constituency'. My plan is to manually populate the post code column with UK post codes. My app will automatically return the political constituency using the [postcodes.io](http://postcodes.io/) API.
+
+![spreadsheet_image](/images/spreadsheet.png)
+
+## Apps script
+
+I've created a new folder in my root directory, `/scripts`.
+
+- `scripts/index.js` contains the main body of the script that I wish to execute
+- `scripts/vars.js` contains a few variable declarations that are very much just config and specific to my app.
+
+For reference, my `vars.js` file currently looks like this:
+
+```js
+var SHEET_ID = <GOOGLE_SPREADSHEET_ID>;
+var SHEET_NAME = <NAME_OF_SHEET>;
+var URL = <URL_OF_MY_FIREBASE_FUNCTION>
+```
+
+To start with, I'm making a very simple `GET` request to the `displayText` function that currently lives in Firebase.
+
+```js
+function myFunction() {
+  var ss = SpreadsheetApp.openById(SHEET_ID);
+  var s1 = ss.getSheetByName(SHEET_NAME);
+  var rows = ss.getLastRow();
+  var data = s1.getRange(2, 1, rows - 1, 2).getValues();
+  var code = data[0][0].toLowerCase().replace(" ", "");
+  var getUrl = URL + "?text=" + code;
+  var response = UrlFetchApp.fetch(getUrl, {
+    method: "get"
+  });
+  Logger.log(response);
+}
+```
+
+This will log the first entry in the post codes column to the Google Apps Script console (in the scripts UI). Via Firebase. A ridiculously complicated way of doing something very simple.
+
+Let's do something better.
+
+### Updating the live script
+
+Now my scripts are in `/scripts` but the `gapps upload` command looks for files in `/src`.
+
+I've added a utility function `scripts.js` which concatenates both `vars.js` and `index.js` and outputs them to `/src/Code.js`. And I've also amended my `watch` script so that NPM is watching the files in my `scripts` folder. `src/Code.js` is no longer in source control, as we don't need it.
+
+So my NPM scripts now look like this:
+
+```json
+"update": "node lib/scripts && gapps upload",
+"watch": "npm-watch update"
+```
+
 ## Things to do:
 
-- [ ] Firebase app setup
-- [ ] GAPPS project setup
-- [ ] Create script that makes request to Firebase
+- [x] Firebase app setup
+- [x] GAPPS project setup
+- [x] Create script that makes request to Firebase
 - [ ] Figure out how to authenticate requests to Firebase
 - [ ] Make the app do something
