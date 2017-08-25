@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "gapps upload",
+    "update": "node scripts && gapps upload",
     "watch": "npm-watch update"
   },
   "repository": {
@@ -23,7 +23,7 @@
   },
   "watch": {
     "update": {
-      "patterns": "src"
+      "patterns": "scripts"
     }
   }
 }
