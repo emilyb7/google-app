@@ -3,6 +3,7 @@ const functions = require("firebase-functions");
 
 // Take the text parameter passed to this HTTP endpoint and insert it into the
 // Return it in the user's browser
-exports.displayText = functions.https.onRequest((req, res) =>
-  res.send(req.query.text)
-);
+exports.displayText = functions.https.onRequest((req, res) => {
+  console.log({ req, query: req.query });
+  res.send(req.query.text);
+});
