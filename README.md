@@ -33,6 +33,26 @@ I followed these steps for getting up and running with Google Apps script.
 
 I've added the auto-generated `gapps.config.json` file to my `.gitignore` because I like to keep code separate from config but this is a preference rather than a security issue.
 
+### Watch files
+
+It's annoying to have to run `gapps upload` after every small change. So I've installed `npm-watch` and added the following config to my `package.json`:
+
+```json
+"watch": {
+  "update": {
+    "patterns": "src"
+  }
+}
+```
+
+As well as two new scripts like this:
+```json
+"scripts": {
+  "update": "gapps upload",
+  "watch": "npm-watch update"
+}
+```
+
 ## Things to do:
 
 - [ ] Firebase app setup

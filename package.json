@@ -1,0 +1,29 @@
+{
+  "name": "gco_test_app",
+  "version": "1.0.0",
+  "description": "Making a simple app with Google Apps script (GAPPS), Firebase and a call to a third party API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "gapps upload",
+    "watch": "npm-watch update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilyb7/google-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilyb7/google-app/issues"
+  },
+  "homepage": "https://github.com/emilyb7/google-app#readme",
+  "dependencies": {
+    "npm-watch": "^0.2.0"
+  },
+  "watch": {
+    "update": {
+      "patterns": "src"
+    }
+  }
+}
