@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node tests/postcode.test.js && node/tests/functions.test.js",
-    "update": "node scripts && gapps upload",
+    "update": "node lib/scripts && gapps upload",
     "watch": "npm-watch update"
   },
   "repository": {

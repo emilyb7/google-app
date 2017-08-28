@@ -64,9 +64,9 @@ I've set up a spreadsheet with 2 columns. I've entered just 2 column name: 'post
 I've created a new folder in my root directory, `/scripts`.
 
 - `scripts/index.js` contains the main body of the script that I wish to execute
-- `scripts/vars.js` contains a few variable declarations that are very much just config and specific to my app.
+- `scripts/config.js` contains a few variable declarations that are very much just config and specific to my app.
 
-For reference, my `vars.js` file currently looks like this:
+For reference, my `config.js` file currently looks like this:
 
 ```js
 var SHEET_ID = <GOOGLE_SPREADSHEET_ID>;
@@ -99,7 +99,7 @@ Let's do something better.
 
 Now my scripts are in `/scripts` but the `gapps upload` command looks for files in `/src`.
 
-I've added a utility function `scripts.js` which concatenates both `vars.js` and `index.js` and outputs them to `/src/Code.js`. And I've also amended my `watch` script so that NPM is watching the files in my `scripts` folder. `src/Code.js` is no longer in source control, as we don't need it.
+I've added a utility function `scripts.js` which concatenates both `config.js` and `index.js` and outputs them to `/src/Code.js`. And I've also amended my `watch` script so that NPM is watching the files in my `scripts` folder. `src/Code.js` is no longer in source control, as we don't need it.
 
 So my NPM scripts now look like this:
 
@@ -117,10 +117,16 @@ I'm testing my functions and endpoints. Tests are in `/tests`.
 Things to note: any NPM modules that need to be used by firebase, need to be added as dependencies in `functions/package.json`.
 
 
+### Testing the app
+
+I've updated my script now so that it calls the `/postcode` function and outputs the results to my spreadsheet.
+
+I can test it by running the script from the Google Scripts UI and checking the results in the spreadsheet.
+
 ## Things to do:
 
 - [x] Firebase app setup
 - [x] GAPPS project setup
 - [x] Create script that makes request to Firebase
 - [ ] Figure out how to authenticate requests to Firebase
-- [ ] Make the app do something
+- [x] Make the app do something
