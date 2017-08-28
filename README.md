@@ -2,9 +2,11 @@
 
 Making a simple app with Google Apps script (GAPPS), Firebase and a call to a third party API.
 
+This project demonstrates one way to set up a project with the above setup. I'll be using it as a boilerplate for future projects.
+
 ## Setting up Firebase
 
-I followed the instructions [here](https://firebase.google.com/docs/functions/get-started), but simplified the example function to omit any database functionality.
+To get stated, I followed the instructions [here](https://firebase.google.com/docs/functions/get-started), but simplified the example function to omit any database functionality.
 
 ```js
 exports.displayText = functions.https.onRequest((req, res) =>
@@ -16,7 +18,7 @@ My really simple function `displayText` can be found in `/functions/index.js`.
 
 I've added the auto-generated `.firebaserc` file to a `.gitignore`.
 
-I test this function by first running `firebase deploy`. The URL for my function is printed to the console. In order to see the result, I can append `?text=emily` to the end of the URL.
+I test this function by first running `firebase deploy`. The URL for my function is printed to the console. In order to see the result, I can append `?text=emilyb7` to the end of the URL.
 
 ## Setting up Apps script
 
@@ -112,9 +114,9 @@ So my NPM scripts now look like this:
 
 I've added a new postcode function and deployed it to firebase.
 
-I'm testing my functions and endpoints. Tests are in `/tests`.
+I've also written some tests for my functions and endpoints using the `tape` module. Tests are in `/tests`.
 
-Things to note: any NPM modules that need to be used by firebase, need to be added as dependencies in `functions/package.json`.
+Things to note: any NPM modules that need to be used by firebase need to be added as dependencies in `functions/package.json`.
 
 
 ### Testing the app
