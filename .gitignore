@@ -4,4 +4,4 @@ firebase-debug.log
 secret.json
 gapps.config.json
 src/Code.js
-scripts/vars.js
+scripts/config.js
