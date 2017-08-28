@@ -1,5 +1,5 @@
 const test = require("tape");
-const getPostcode = require("../functions/get_postcode_details.js.js");
+const getPostcode = require("../functions/get_postcode_details.js");
 
 test("postcode test", t => {
   const postcode = "br76td";

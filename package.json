@@ -4,7 +4,7 @@
   "description": "Making a simple app with Google Apps script (GAPPS), Firebase and a call to a third party API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node tests/postcode.test.js && node/tests/functions.test.js",
     "update": "node scripts && gapps upload",
     "watch": "npm-watch update"
   },

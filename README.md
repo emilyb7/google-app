@@ -108,6 +108,15 @@ So my NPM scripts now look like this:
 "watch": "npm-watch update"
 ```
 
+### Functions and tests
+
+I've added a new postcode function and deployed it to firebase.
+
+I'm testing my functions and endpoints. Tests are in `/tests`.
+
+Things to note: any NPM modules that need to be used by firebase, need to be added as dependencies in `functions/package.json`.
+
+
 ## Things to do:
 
 - [x] Firebase app setup
